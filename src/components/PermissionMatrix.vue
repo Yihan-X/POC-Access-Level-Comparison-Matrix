@@ -68,7 +68,7 @@ import PermissionRow from './PermissionRow.vue';
 import MultiSelect from './MultiSelect.vue';
 
 const props = defineProps<PermissionMatrix>();
-const visibleRoles = ref([...props.roles]);
+const visibleRoles = ref([...props.roles].sort());
 
 const logCurrentData = () => {
   console.log('Current Permission Matrix Data:', {
