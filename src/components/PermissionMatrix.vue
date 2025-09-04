@@ -206,6 +206,10 @@ const logCurrentData = () => {
 }
 
 .permission-matrix__group:last-child {
+  border-bottom: none;
+}
+
+.permission-matrix__group:last-child {
   margin-bottom: 0;
 }
 
