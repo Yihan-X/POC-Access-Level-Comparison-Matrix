@@ -16,9 +16,6 @@
   border-radius: 12px;
   padding: 24px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.card__content {
-  flex: 1;
+  min-width: 800px;
 }
 </style>

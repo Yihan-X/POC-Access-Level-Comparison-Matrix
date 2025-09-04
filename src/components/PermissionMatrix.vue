@@ -14,7 +14,7 @@
         <Card>
           <div class="permission-matrix__section-header">
             <div class="permission-matrix__section-header-content">
-              <div class="permission-matrix__icon" v-if="category.icon">
+              <div class="permission-matrix__icon" v-if="category.icon">  
                 <span v-html="category.icon"></span>
               </div>
               <div class="permission-matrix__section-text">
@@ -56,36 +56,43 @@ defineProps<PermissionMatrix>();
 
 <style scoped>
 .permission-matrix {
-  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
+  max-width: 1200px;
 }
 
 .permission-matrix__header {
   display: flex;
   margin-bottom: 24px;
   padding: 0 24px;
+  gap: 24px;
 }
+
 
 .permission-matrix__spacer {
   min-width: 400px;
-  margin-right: 20px;
 }
 
 .permission-matrix__roles {
   display: flex;
-  gap: 24px;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .permission-matrix__role {
-  width: 120px;
+  flex: 1;
+  min-width: 80px;
+  padding: 0 10px;
   text-align: center;
   font-weight: 500;
   color: #111827;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .permission-matrix__sections {
-  display: flex;
-  flex-direction: column;
   gap: 24px;
 }
 

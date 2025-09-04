@@ -40,7 +40,6 @@ const togglePermission = (role: Role) => {
 }
 
 .permission-row__info {
-  flex: 1;
   min-width: 400px;
   padding: 16px 24px 16px 0;
 }
@@ -60,12 +59,13 @@ const togglePermission = (role: Role) => {
 
 .permission-row__permissions {
   display: flex;
-  gap: 24px;
+  flex: 1 1 auto;
   height: 100%; /* Make it full height */
 }
 
 .permission-row__cell {
-  width: 120px;
+  flex: 1 1 auto;
+  min-width: 100px;
   display: flex;
   align-items: center;
   justify-content: center;

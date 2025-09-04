@@ -1,11 +1,6 @@
 <template>
-  <div class="app-wrapper">
-    <div class="app">
-      <PermissionMatrix
-        :categories="permissionMatrix.categories"
-        :roles="permissionMatrix.roles"
-      />
-    </div>
+  <div class="app">
+    <PermissionMatrix :categories="permissionMatrix.categories" :roles="permissionMatrix.roles" />
   </div>
 </template>
 
@@ -21,22 +16,13 @@ const permissionMatrix = reactive(mockPermissionMatrix);
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  background-color: #F3F4F6;
-  color: #111827;
-}
-
-.app-wrapper {
-  min-width: 100%;
-  min-height: 100vh;
-  background-color: #F3F4F6;
-  overflow-x: auto;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    sans-serif;
+  background-color: #f3f4f6;
 }
 
 .app {
-  min-width: max-content;
   padding: 24px;
   margin: 0 auto;
-  background-color: #F3F4F6;
 }
 </style>
