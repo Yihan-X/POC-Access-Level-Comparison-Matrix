@@ -1,9 +1,15 @@
 <template>
   <div class="permission-matrix">
     <div class="permission-matrix__header">
-      <div class="permission-matrix__spacer"></div>
+      <div class="permission-matrix__spacer">
+        <MultiSelect
+          v-model="visibleRoles"
+          :options="roles"
+          class="permission-matrix__role-selector"
+        />
+      </div>
       <div class="permission-matrix__roles">
-        <div v-for="role in roles" :key="role" class="permission-matrix__role">
+        <div v-for="role in visibleRoles" :key="role" class="permission-matrix__role">
           {{ role }}
         </div>
       </div>
@@ -34,7 +40,7 @@
                   :key="permission.id"
                   :name="permission.name"
                   :description="permission.description"
-                  :roles="roles"
+                  :roles="visibleRoles"
                   :role-access="permission.roleAccess"
                 />
               </div>
@@ -47,11 +53,14 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
 import type { PermissionMatrix } from '../types';
 import Card from './Card.vue';
 import PermissionRow from './PermissionRow.vue';
+import MultiSelect from './MultiSelect.vue';
 
-defineProps<PermissionMatrix>();
+const props = defineProps<PermissionMatrix>();
+const visibleRoles = ref([...props.roles]);
 </script>
 
 <style scoped>
@@ -72,12 +81,19 @@ defineProps<PermissionMatrix>();
 
 .permission-matrix__spacer {
   min-width: 400px;
+  display: flex;
+  justify-content: end;
+}
+
+.permission-matrix__role-selector {
+  margin-left: 24px;
 }
 
 .permission-matrix__roles {
-  display: flex;
-  flex: 1 1 auto;
   min-width: 0;
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
 }
 
 .permission-matrix__role {
