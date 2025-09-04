@@ -1,30 +1,42 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div class="app-wrapper">
+    <div class="app">
+      <PermissionMatrix
+        :categories="permissionMatrix.categories"
+        :roles="permissionMatrix.roles"
+      />
+    </div>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+<script setup lang="ts">
+import { reactive } from 'vue';
+import PermissionMatrix from './components/PermissionMatrix.vue';
+import { mockPermissionMatrix } from './data/mockPermissions';
+
+const permissionMatrix = reactive(mockPermissionMatrix);
+</script>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: #F3F4F6;
+  color: #111827;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+.app-wrapper {
+  min-width: 100%;
+  min-height: 100vh;
+  background-color: #F3F4F6;
+  overflow-x: auto;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+.app {
+  min-width: max-content;
+  padding: 24px;
+  margin: 0 auto;
+  background-color: #F3F4F6;
 }
 </style>
