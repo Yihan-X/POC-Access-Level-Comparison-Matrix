@@ -45,7 +45,7 @@ const togglePermission = (role: Role) => {
 }
 
 .permission-row__name {
-  font-weight: 500;
+  font-weight: 400;
   color: #111827;
   text-align: left;
 }

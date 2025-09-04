@@ -2,11 +2,19 @@
   <div class="permission-matrix">
     <div class="permission-matrix__header">
       <div class="permission-matrix__spacer">
-        <MultiSelect
-          v-model="visibleRoles"
-          :options="roles"
-          class="permission-matrix__role-selector"
-        />
+        <div class="permission-matrix__controls">
+          <button 
+            class="permission-matrix__log-button" 
+            @click="logCurrentData"
+          >
+            Log Data
+          </button>
+          <MultiSelect
+            v-model="visibleRoles"
+            :options="roles"
+            class="permission-matrix__role-selector"
+          />
+        </div>
       </div>
       <div class="permission-matrix__roles">
         <div v-for="role in visibleRoles" :key="role" class="permission-matrix__role">
@@ -61,6 +69,14 @@ import MultiSelect from './MultiSelect.vue';
 
 const props = defineProps<PermissionMatrix>();
 const visibleRoles = ref([...props.roles]);
+
+const logCurrentData = () => {
+  console.log('Current Permission Matrix Data:', {
+    categories: props.categories,
+    roles: props.roles,
+    visibleRoles: visibleRoles.value
+  });
+};
 </script>
 
 <style scoped>
@@ -85,8 +101,30 @@ const visibleRoles = ref([...props.roles]);
   justify-content: end;
 }
 
+.permission-matrix__controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.permission-matrix__log-button {
+  height: 36px;
+  padding: 0 12px;
+  background: #6366F1;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.permission-matrix__log-button:hover {
+  background: #4F46E5;
+}
+
 .permission-matrix__role-selector {
-  margin-left: 24px;
+  margin-left: 0;
 }
 
 .permission-matrix__roles {
@@ -110,6 +148,8 @@ const visibleRoles = ref([...props.roles]);
 
 .permission-matrix__sections {
   gap: 24px;
+  display: flex;
+  flex-direction: column;
 }
 
 .permission-matrix__section-header {
@@ -162,6 +202,7 @@ const visibleRoles = ref([...props.roles]);
 
 .permission-matrix__group {
   margin-bottom: 24px;
+  border-bottom: 1px solid #E5E7EB;
 }
 
 .permission-matrix__group:last-child {
